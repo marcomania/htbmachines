@@ -1,0 +1,12 @@
+# Nmap 7.93 scan initiated Tue Feb 28 21:25:18 2023 as: nmap -p 80 -sCV -oN targeted 192.168.1.33
+Nmap scan report for 192.168.1.33
+Host is up (0.00079s latency).
+
+PORT   STATE SERVICE VERSION
+80/tcp open  http    Apache httpd 2.4.18 ((Ubuntu))
+|_http-title: IMF - Homepage
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+MAC Address: 08:00:27:77:D8:17 (Oracle VirtualBox virtual NIC)
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Tue Feb 28 21:25:31 2023 -- 1 IP address (1 host up) scanned in 13.06 seconds

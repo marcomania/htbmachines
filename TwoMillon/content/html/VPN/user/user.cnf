@@ -1,0 +1,35 @@
+HOME = /var/www/html/VPN/
+#RANDFILE = /var/www/html/.rnd
+prompt = no
+
+####################################################################
+[ req ]
+default_bits= 2048
+default_keyfile = user/username.key
+distinguished_name = username
+req_extensions = server_req_extensions
+string_mask = utf8only
+
+####################################################################
+[ username ]
+countryName = GB
+stateOrProvinceName = London
+localityName = London
+organizationName = username
+commonName = username
+emailAddress = user@hackthebox.eu
+
+####################################################################
+[ server_req_extensions ]
+
+subjectKeyIdentifier = hash
+basicConstraints = CA:FALSE
+keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment, keyAgreement, keyCertSign, cRLSign
+#subjectAltName = @alternate_names
+nsComment = "OpenSSL Generated Certificate"
+
+####################################################################
+[ alternate_names ]
+# More/less DNS records and IPs can be added/removed.
+#DNS.1 = domain.com
+#IP.1 = 10.10.10.10

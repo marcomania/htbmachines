@@ -1,0 +1,14 @@
+# Nmap 7.93 scan initiated Sun Jan  7 13:12:56 2024 as: nmap -sCV -p 22 -oN targeted 10.10.11.224
+Nmap scan report for 10.10.11.224
+Host is up (0.17s latency).
+
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.7 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 aa8867d7133d083a8ace9dc4ddf3e1ed (RSA)
+|   256 ec2eb105872a0c7db149876495dc8a21 (ECDSA)
+|_  256 b30c47fba2f212ccce0b58820e504336 (ED25519)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sun Jan  7 13:13:06 2024 -- 1 IP address (1 host up) scanned in 9.82 seconds

